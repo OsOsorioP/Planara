@@ -1,0 +1,92 @@
+.task__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  justify-content: center;
+}
+
+.task__container a {
+  color: black;
+  text-decoration:none;
+}
+
+.task__container a .task {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 15rem;
+}
+
+.task__container a .task:hover {
+  opacity: 0.7;
+}
+
+.task__title {
+  align-items: center;
+  background: rgb(0, 255, 255);
+  width: 100%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 0.6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5rem;
+
+}
+
+.task__title h5 {
+  text-align: center;
+  font-size: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task__body{
+  background-color: rgba(0, 255, 255, 0.571);
+  width: 100%;
+  height: 80%;
+  border-bottom-left-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem;
+  padding: 0.5rem;
+}
+
+.task_icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.task_icons span a{
+  color: black;
+}
+
+.task__create {
+  width: 100%;
+  height: 15rem;
+  padding: 0.7rem;
+  align-content: center;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.task__create i {
+  font-size: 3rem;
+  color: rgb(107, 107, 107);
+  transition: all 0.2s;
+}
+
+.task__create i:hover {
+  color: rgb(77, 77, 77);
+  transition: all 0.2s;
+}
+
+@media (max-width:700px) {
+  .task__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .task__container a .task {
+    width: 100%;
+    height: 15rem;
+  }
+
+}

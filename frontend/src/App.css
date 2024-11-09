@@ -1,0 +1,27 @@
+.loader-background {
+  width: 100vw;
+  height: 100vh;
+  position: relative; 
+  z-index: 9999;
+}
+
+.loader {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 3.5rem;
+  position: absolute; 
+  color: rgba(251, 188, 5, 1);
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+}
+
+
+/* Un estilo para las imagenes cargadas tengas el mismo tamaaño */
+
+.maximoTC {
+  width: 300px;
+  height: auto;
+}

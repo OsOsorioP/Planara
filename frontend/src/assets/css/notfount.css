@@ -1,0 +1,39 @@
+/*--------------------------------------------------------------
+# main
+--------------------------------------------------------------*/
+.main__notfound {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+/*--------------------------------------------------------------
+# 404
+--------------------------------------------------------------*/
+
+.notfound {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+/* button */
+
+.notfound button {
+  font-size: var(--text-size);
+  color: var(--button-color);
+  position: relative;
+  background: var(--button-color-background);
+  border: 2px solid black;
+  border-radius: 0.6rem;
+  padding: 0.4rem 1.5rem 0.4rem 1.5rem;
+}
+
+.notfound button:hover {
+  color: var(--button-color-hover);
+  background: rgb(255, 255, 255);
+}

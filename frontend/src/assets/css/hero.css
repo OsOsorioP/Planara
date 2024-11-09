@@ -1,0 +1,72 @@
+/*--------------------------------------------------------------
+# Container hero
+--------------------------------------------------------------*/
+
+.container__hero {
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  height: auto;
+  margin: 7.5rem 3rem 0rem 3rem;
+}
+
+/* titulo */
+
+.container__hero h1 {
+  text-transform: uppercase;
+  font-size: 4rem;
+}
+
+/* button */
+
+.container__hero button{
+  width: 7.5rem;
+  height: 2.5rem;
+  font-weight: 350;
+  border-radius: 0.6rem;
+  color: white;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: black;
+  transition: all 0.5s;
+  box-sizing: border-box;
+}
+
+.container__hero button:hover{
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  transition: all 0.5s;
+}
+
+.container__hero button:active {
+  background-color: rgb(198, 198, 198);
+}
+
+/*--------------------------------------------------------------
+# hero 1
+--------------------------------------------------------------*/
+
+.hero__1 {
+  display: grid;
+  padding: 12rem;
+  background: rgba(251, 188, 5, 1);
+}
+
+/*--------------------------------------------------------------
+# hero 2
+--------------------------------------------------------------*/
+
+.hero__2 {
+  display: grid;
+  padding: 12rem;
+  margin-top: 3rem;
+}
+
+/*--------------------------------------------------------------
+# hero 3
+--------------------------------------------------------------*/
+
+.hero__3 {
+  display: grid;
+  padding: 12rem;
+ margin-top: 3rem;
+}

@@ -1,0 +1,56 @@
+/*--------------------------------------------------------------
+# main footer
+--------------------------------------------------------------*/
+
+.main__footer {
+    display: flex;
+    gap:2rem;
+    border-top: 0.1rem solid rgb(200, 200, 200);
+    margin: 3rem 3rem 0rem 3rem;
+    justify-content: space-between;
+    transition: all 5s;
+}
+
+/* titulo */
+
+.main__footer h2 {
+    text-transform: uppercase;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+/* iconos */
+
+.main__footer .footer__icons{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.main__footer .footer__icons a{
+    transition: all 0.3s;
+    font-size: 1.5rem;
+    color: rgba(30, 30, 30, 1);
+}
+.main__footer .footer__icons a:hover{
+    transition: all 0.5s;
+    padding-bottom: 0.6rem;
+    color: rgba(251, 188, 5, 1);
+}
+
+/* links */
+
+.main__footer .footer__links{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition-duration: 2s;
+    a{
+        color: black;
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+}

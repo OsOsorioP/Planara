@@ -1,0 +1,90 @@
+
+.main__login {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.main__logo i {
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 2.2rem;
+  font-size: 3rem;
+  background: rgba(251, 188, 5, 1);
+  width: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.form__ {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 3rem 6rem 3rem 6rem;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+  -moz-box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+  box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+  width: 40%;
+}
+
+input {
+  background-color: rgb(247, 247, 247);
+  border-radius: 2rem;
+  border: 0.1rem solid gray;
+  padding: 0.6rem 0.6rem 0.6rem 0.6rem;
+  width: 100%;
+  margin: 0.5rem;
+}
+
+/* form button */
+
+.form__button {
+  text-align: center;
+  width: auto;
+  height: auto;
+}
+
+.form__button button {
+  display: inline-block;
+  font-weight:500;
+  text-align: center;
+  align-items: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 0.1rem solid transparent;
+  background-color: rgba(251, 188, 5, 1);
+  padding: 0.5rem 0rem 0.5rem 0rem;
+  width: 100%;
+  border-radius: 0.3rem;
+}
+
+.form__button button:hover {
+  outline: 0;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.38);
+}
+
+/* form options */
+
+.form__options {
+
+  i{
+    color: var(--color-primary);
+  }
+}
+
+/* form footer */
+
+.form__footer {
+  display: flex;
+  gap: 1rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
