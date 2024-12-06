@@ -7,7 +7,6 @@ class TareaEntidad {
   public fechaVencimiento: Date;
   public estado: number;
   public prioridad: number;
-  public color: string;
   public codUsuario: UsuarioEntidad
 
   constructor(
@@ -17,7 +16,6 @@ class TareaEntidad {
     fechaVencimiento: Date,
     estado: number,
     prioridad: number,
-    color:string,
     codUsuario:UsuarioEntidad
   ) {
     this.titulo = titulo;
@@ -26,7 +24,6 @@ class TareaEntidad {
     this.fechaVencimiento = fechaVencimiento;
     this.estado = estado;
     this.prioridad = prioridad;
-    this.color = color;
     this.codUsuario = codUsuario;
   }
 }
