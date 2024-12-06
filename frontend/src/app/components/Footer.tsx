@@ -4,7 +4,7 @@ export const Footer = () => {
     return (
         <>
             <footer className='main__footer'>
-                <h2>task</h2>
+                <h2>Planara</h2>
                 <div className="footer__icons">
                     <a href="/#"><i className="fa-brands fa-facebook"></i></a>
                     <a href="/#"><i className="fa-brands fa-linkedin"></i></a>

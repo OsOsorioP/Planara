@@ -9,29 +9,29 @@ export const MenuSuperior2 = () => {
     const navegacion = useNavigate();
     const miUsuario = useContext(ContextoUsuario);
     const nombreUsuario = miUsuario?.autenticado.nombre;
-    const [id, setId] = useState<string | undefined>(undefined); // 'undefined' es el estado inicial
+    const [id, setId] = useState<string | undefined>(undefined);
 
     let avatarUsuario = String(localStorage.getItem("avatar"));
-    
-    // Verifica el token y actualiza el estado del 'id'
+
+
     useEffect(() => {
         const token = localStorage.getItem("token");
-        
+
         if (token) {
-            const payloadBase64 = token.split('.')[1]; // Obtiene la parte del payload
-            const decodedPayload = JSON.parse(atob(payloadBase64)); // Decodifica Base64 y convierte a JSON
-            setId(decodedPayload.id); // Establece el 'id' en el estado
+            const payloadBase64 = token.split('.')[1];
+            const decodedPayload = JSON.parse(atob(payloadBase64));
+            setId(decodedPayload.id);
         } else {
-            setId(undefined); // Si no hay token, restablece el 'id' a undefined
+            setId(undefined);
         }
-    }, []); // Este useEffect solo se ejecuta una vez al montar el componente
+    }, []);
 
     const cerrarSesion = (event: MouseEvent<HTMLElement>) => {
         event.preventDefault();
-        localStorage.removeItem("token"); // Elimina el token del localStorage
-        localStorage.removeItem("avatar"); // Elimina el avatar (si es necesario)
-        setId(undefined); // Restablece el 'id' cuando se cierra sesión
-        navegacion("/"); // Redirige a la página de inicio
+        localStorage.removeItem("token");
+        localStorage.removeItem("avatar");
+        setId(undefined);
+        navegacion("/");
     }
 
     return (
@@ -65,7 +65,6 @@ export const MenuSuperior2 = () => {
                             </li>
 
                             <li>
-                                {/* Usamos el id solo cuando está disponible */}
                                 {id && (
                                     <Link className="dropdown-item d-flex align-items-center" to={`profile-config/${id}`}>
                                         <i className="fa-solid fa-gear"></i>

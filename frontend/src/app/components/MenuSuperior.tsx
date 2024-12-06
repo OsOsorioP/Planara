@@ -22,7 +22,7 @@ export const MenuSuperior = () => {
                 <div className='d-flex align-items-center justify-content-between'>
                     <Link to="/dashboard" className='logo d-flex align-items-center'>
                         <div className='image'></div>
-                        <h1 className='d-none d-lg-block'>Task</h1>
+                        <h1 className='d-none d-lg-block'>Planara</h1>
                     </Link>
                 </div>
 
