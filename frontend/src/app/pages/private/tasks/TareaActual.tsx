@@ -5,15 +5,15 @@ import { Col, Row, Form, Button } from "react-bootstrap"
 
 import { ToastContainer } from "react-toastify"
 
+import Tarea from "../../../models/Tarea"
 import Perfil from "../../../models/Perfil"
 import Usuario from "../../../models/Usuario"
-import Tarea from "../../../models/Tarea"
 import Api from "../../../utils/domains/Api"
 import ServicioPrivado from "../../../services/ServicioPrivado"
 import { useFormulario } from "../../../utils/hooks/useFormulario"
 import { MensajeToastify } from "../../../utils/functions/MensajeToastify"
 
-export const UsuarioActual = () => {
+export const TareaActual = () => {
     let { id } = useParams();
 
     const [todoListo, setTodoListo] = useState<boolean>(false);
@@ -21,44 +21,32 @@ export const UsuarioActual = () => {
 
     const regresar = useNavigate();
 
-
     type formaHtml = React.FormEvent<HTMLFormElement>;
     const [enProceso, setEnProceso] = useState<boolean>(false);
-    const [arregloPerfiles, setArregloPerfiles] = useState<Perfil[]>([]);
 
-    // Hook para formulario
     let {
         titulo,
         descripcion,
         estado,
         prioridad,
-        color,
+        fechaVencimiento,
         dobleEnlace,
         objeto,
-    } = useFormulario<Tarea>(new Tarea("", "", "", new Date(), new Date(), 0, 0, "",new Usuario("", "", "", "", new Date(), "", "", new Perfil("", ""))));
+    } = useFormulario<Tarea>(new Tarea("", "", "", new Date(), new Date(), 0, 0, new Usuario("", "", "", "", new Date(), "", "", new Perfil("", ""))));
 
-    // Obtener Usuario por id
-    const obtenerUnUsuario = async () => {
-        const urlCargarUsuario = Api.TAREAS_OBTENER_UNO + "/" + id;
-        const usuRecibido = await ServicioPrivado.peticionGET(urlCargarUsuario);
+    const obtenerUnaTarea = async () => {
+        const urlCargarTarea = Api.TAREAS_OBTENER_UNO + "/" + id;
+        const tarRecibido = await ServicioPrivado.peticionGET(urlCargarTarea);
 
-        if (usuRecibido) {
-            objeto._id = usuRecibido._id;
-            objeto.titulo = usuRecibido.titulo;
-            objeto.descripcion = usuRecibido.descripcion;
-            objeto.estado = usuRecibido.estado;
-            objeto.prioridad = usuRecibido.prioridad;
-
-            if (usuRecibido) {
-                setTodoListo(true);
-            }
+        if (tarRecibido) {
+            objeto._id = tarRecibido._id;
+            objeto.titulo = tarRecibido.titulo;
+            objeto.descripcion = tarRecibido.descripcion;
+            objeto.estado = tarRecibido.estado;
+            objeto.prioridad = tarRecibido.prioridad;
+            objeto.fechaVencimiento = tarRecibido.fechaVencimiento
+            setTodoListo(true);
         }
-    }
-
-    // Obtener perfiles a mostrar
-    const obtenerPerfiles = async () => {
-        const resultado = await ServicioPrivado.peticionGET(Api.TAREAS_OBTENER)
-        setArregloPerfiles(resultado);
     }
 
     const enviarFormulario = async (fh: formaHtml) => {
@@ -75,39 +63,42 @@ export const UsuarioActual = () => {
             const urlActualizar = Api.TAREAS_ACTUALIZAR + "/" + id;
             const objetoActualizar = {
                 _id: objeto._id,
-                nombreUsuario: objeto,
-                correoUsuario: objeto,
-                fecha: new Date(),
-                avatarUsuario:objeto,
-                codPerfil: objeto}
-            console.log(objetoActualizar);
+                titulo: objeto.titulo,
+                descripcion: objeto.descripcion,
+                estado: objeto.estado,
+                prioridad: objeto.prioridad,
+                fechaVencimiento: objeto.fechaVencimiento
+            }
             const resultado = await ServicioPrivado.peticionPUT(urlActualizar, objetoActualizar);
 
-            if (resultado.despues) {
+            if (resultado) {
                 setEnProceso(false);
-                MensajeToastify("success", "Usuario actualizado correctamente", 7000)
+                MensajeToastify("success", "Tarea se actualizado correctamente", 7000)
+                regresar(`/dashboard/detailtask/${id}`)
             } else {
-                MensajeToastify("error", "No se puede actualizar el Usuario. Verifique el correo electrónico.", 7000)
+                MensajeToastify("error", "No se puede actualizar la tarea. Verifique los campos.", 7000)
             }
         }
     }
 
     useEffect(() => {
-        obtenerPerfiles();
-        obtenerUnUsuario();
+        obtenerUnaTarea();
     }, []);
 
     return (
         <>
             <main className="main">
                 <div className="pagetitle">
-                    <h1>Usuarios</h1>
+                    <h1>Tareas</h1>
                     <nav>
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item">
+                        <li className="breadcrumb-item">
                                 <Link to="/dashboard">Inicio</Link>
                             </li>
-                            <li className="breadcrumb-item active">Administración de Usuarios</li>
+                            <li className="breadcrumb-item">
+                                <Link to="/dashboard/listtask">Tareas</Link>
+                            </li>
+                            <li className="breadcrumb-item active">Administración de tareas</li>
                         </ol>
                     </nav>
                 </div>
@@ -125,22 +116,22 @@ export const UsuarioActual = () => {
                                     <Form.Group as={Row} className="mb-3" controlId="titulo">
                                         <Form.Label column sm={3}>
                                             <span className="text-success">
-                                                <small>Nombre Completo:</small>
+                                                <small>Titulo:</small>
                                             </span>
                                         </Form.Label>
                                         <Col sm={9}>
                                             <Form.Control
+                                                size="sm"
                                                 required
                                                 type="text"
-                                                name="nombreUsuario"
-                                                className="form-control"
+                                                name="titulo"
                                                 value={titulo}
                                                 onChange={dobleEnlace}
-                                            >
-
-                                            </Form.Control>
+                                                className="form-control"
+                                                maxLength={38}
+                                            />
                                             <Form.Control.Feedback type="invalid">
-                                                Nombre del usuario es obligatorio
+                                                El titulo es obligatorio y maximo 16 letras
                                             </Form.Control.Feedback>
                                         </Col>
                                     </Form.Group>
@@ -148,24 +139,44 @@ export const UsuarioActual = () => {
                                     <Form.Group as={Row} className="mb-3" controlId="descripcion">
                                         <Form.Label column sm={3}>
                                             <span className="text-success">
-                                                <small>Correo Electrónico:</small>
+                                                <small>Descripción:</small>
                                             </span>
                                         </Form.Label>
                                         <Col sm={9}>
                                             <Form.Control
                                                 size="sm"
                                                 required
-                                                type="text"
-                                                name="correoUsuario"
-                                                className="form-control"
+                                                as={"textarea"}
+                                                name="descripcion"
                                                 value={descripcion}
                                                 onChange={dobleEnlace}
-                                                pattern="[a-z0-9+_.-]+@[a-z]+\.[a-z]{2,3}"
-                                            >
+                                                className="form-control"
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Descripción invalida
+                                            </Form.Control.Feedback>
+                                        </Col>
+                                    </Form.Group>
 
+                                    <Form.Group as={Row} className="mb-3" controlId="fechaVencimiento">
+                                        <Form.Label column sm={3}>
+                                            <span className="text-success">
+                                                <small>Fecha Final:</small>
+                                            </span>
+                                        </Form.Label>
+                                        <Col sm={9}>
+                                            <Form.Control
+                                                size="sm"
+                                                required
+                                                value={String(fechaVencimiento)}
+                                                type="datetime-local"
+                                                name="fechaVencimiento"
+                                                onChange={dobleEnlace}
+                                                className="form-control"
+                                            >
                                             </Form.Control>
                                             <Form.Control.Feedback type="invalid">
-                                                Correo Inválido
+                                                La fecha final es obligatoria.
                                             </Form.Control.Feedback>
                                         </Col>
                                     </Form.Group>
@@ -173,40 +184,63 @@ export const UsuarioActual = () => {
                                     <Form.Group as={Row} className="mb-3" controlId="estado">
                                         <Form.Label column sm={3}>
                                             <span className="text-success">
-                                                <small>Perfil del Usuario:</small>
+                                                <small>Estado:</small>
                                             </span>
                                         </Form.Label>
                                         <Col sm={9}>
                                             <Form.Select
                                                 size="sm"
                                                 required
-                                                name="codPerfil"
-                                                value={estado}
-                                                onChange={dobleEnlace}
+                                                name="estado"
                                                 className="form-control"
+                                                onChange={dobleEnlace}
+                                                value={estado}
                                             >
-                                                <option value="">Seleccione el estado</option>
-                                                
-                                                    <option value={1}>
-                                                        1
-                                                    </option>
-                                                
-
+                                                <option selected value={1}>Por Defecto</option>
+                                                <option value="1">Pendiente</option>
+                                                <option value="2">En curso</option>
+                                                <option value="3">Completada</option>
                                             </Form.Select>
                                             <Form.Control.Feedback type="invalid">
-                                                Seleccione el perfil del usuario
+                                                Elegir el estado es obligatorio.
+                                            </Form.Control.Feedback>
+                                        </Col>
+                                    </Form.Group>
+
+                                    <Form.Group as={Row} className="mb-3" controlId="prioridad">
+                                        <Form.Label column sm={3}>
+                                            <span className="text-success">
+                                                <small>Prioridad:</small>
+                                            </span>
+                                        </Form.Label>
+                                        <Col sm={9}>
+                                            <Form.Select
+                                                size="sm"
+                                                required
+                                                name="prioridad"
+                                                className="form-control"
+                                                onChange={dobleEnlace}
+                                                value={prioridad}
+                                            >
+                                                <option selected value={1}>Por Defecto</option>
+                                                <option value="1">Baja</option>
+                                                <option value="2">Media</option>
+                                                <option value="3">Alta</option>
+                                            </Form.Select>
+                                            <Form.Control.Feedback type="invalid">
+                                                Elegir la prioridad es obligatorio.
                                             </Form.Control.Feedback>
                                         </Col>
                                     </Form.Group>
 
                                     <Form.Group column as={Row} className="mb-3">
-                                        <Col  sm={3}>
+                                        <Col sm={3}>
                                             <Button type="submit" className="btn btn-sm">
                                                 Actualizar Tarea
                                             </Button>
-                                            
+
                                         </Col>
-                                        <Col  sm={9}>
+                                        <Col sm={9}>
                                             <Button
                                                 onClick={() => regresar(-1)}
                                                 className="btn btn-sm"

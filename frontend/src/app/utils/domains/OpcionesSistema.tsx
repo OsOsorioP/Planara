@@ -17,9 +17,8 @@ const opcionesAdmin = [
 ]
 
 const opcionesUsuario = [
-    { nombre: "Acerca de", icono: "fa-solid fa-address-card", ruta: "/dashboard", hijos: [], },
+    { nombre: "Panel", icono: "fa-solid fa-address-card", ruta: "/dashboard", hijos: [], },
     {nombre: "Tareas", icono: "fa-regular fa-clipboard", ruta: "/dashboard/listtask", hijos: [],},
-    {nombre: "Charlar", icono: "fa-solid fa-comments", ruta: "/dashboard", hijos: [],},
     { nombre: "Ayuda y Soporte", icono: "fa-solid fa-circle-question", ruta: "/dashboard/about", hijos: [], }
 ]
 

@@ -17,7 +17,6 @@ export const MenuLateral = () => {
             opciones = opcionesUsuario;
             break;
         default:
-            console.log("No hay menú...");
             break;
     }
 

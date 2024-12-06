@@ -28,16 +28,14 @@ export const TareaCrear = () => {
     const [enProceso, setEnProceso] = useState<boolean>(false);
     const [usuario, setUsuario] = useState<Usuario>();
 
-    // Hook para formulario se elimino el avatarUsuario cualquier cosa volver a colocar
     let {
         titulo,
         descripcion,
         estado,
         prioridad,
-        color,
         dobleEnlace,
         objeto,
-    } = useFormulario<Tarea>(new Tarea("", "", "", new Date(), new Date(), 0, 0, "",new Usuario("", "", "", "", new Date(), "", "", new Perfil("", ""))));
+    } = useFormulario<Tarea>(new Tarea("", "", "", new Date(), new Date(), 0, 0,new Usuario("", "", "", "", new Date(), "", "", new Perfil("", ""))));
 
     const obtenerUsuario = async () => {
         const resultado = await ServicioPrivado.peticionGET(Api.USUARIOS_OBTENER_UNO + "/" + id)
@@ -152,7 +150,7 @@ export const TareaCrear = () => {
                                                 className="form-control"
                                             />
                                             <Form.Control.Feedback type="invalid">
-                                                Correo Inválido
+                                                Descripción invalida
                                             </Form.Control.Feedback>
                                         </Col>
                                     </Form.Group>
@@ -194,13 +192,13 @@ export const TareaCrear = () => {
                                                 onChange={dobleEnlace}
                                                 value={estado}
                                             >
-                                                <option selected value={1}>Defecto</option>
+                                                <option selected value={1}>Por Defecto</option>
                                                 <option value="1">Pendiente</option>
                                                 <option value="2">En curso</option>
                                                 <option value="3">Completada</option>
                                             </Form.Select>
                                             <Form.Control.Feedback type="invalid">
-                                                El nombre completo es obligatorio
+                                            Elegir el estado es obligatorio.
                                             </Form.Control.Feedback>
                                         </Col>
                                     </Form.Group>
@@ -220,38 +218,10 @@ export const TareaCrear = () => {
                                                 onChange={dobleEnlace}
                                                 value={prioridad}
                                             >
-                                                <option selected value={1}>Defecto</option>
+                                                <option selected value={1}>Por Defecto</option>
                                                 <option value="1">Baja</option>
                                                 <option value="2">Media</option>
                                                 <option value="3">Alta</option>
-                                            </Form.Select>
-                                            <Form.Control.Feedback type="invalid">
-                                                Elegir la prioridad es obligatorio.
-                                            </Form.Control.Feedback>
-                                        </Col>
-                                    </Form.Group>
-
-                                    <Form.Group as={Row} className="mb-3" controlId="color">
-                                        <Form.Label column sm={3}>
-                                            <span className="text-success">
-                                                <small>Color:</small>
-                                            </span>
-                                        </Form.Label>
-                                        <Col sm={9}>
-                                            <Form.Select
-                                                size="sm"
-                                                required
-                                                name="color"
-                                                className="form-control"
-                                                onChange={dobleEnlace}
-                                                value={color}
-                                            >
-                                                <option selected value={1}>Defecto</option>
-                                                <option value="1">Rojo</option>
-                                                <option value="2">Azul</option>
-                                                <option value="3">Amarrillo</option>
-                                                <option value="3">Naranja</option>
-                                                <option value="3">Verde</option>
                                             </Form.Select>
                                             <Form.Control.Feedback type="invalid">
                                                 Elegir la prioridad es obligatorio.

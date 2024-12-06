@@ -18,6 +18,20 @@ export const TareaListado = () => {
         setArregloTareas(resultado);
     }
 
+    const estados: Record<number, { texto: string; color: string }> = {
+        1: { texto: "Pendiente", color: "blue" },
+        2: { texto: "En curso", color: "purple" },
+        3: { texto: "Finalizado", color: "green" },
+    };
+
+    const prioridades: Record<number, { texto: string; color: string }> = {
+        1: { texto: "Baja", color: "green" },
+        2: { texto: "Media", color: "orange" },
+        3: { texto: "Alta", color: "red" },
+    };
+
+
+
     useEffect(() => {
         obtenerTareas();
     }, []);
@@ -41,21 +55,19 @@ export const TareaListado = () => {
                     <div className="task__container">
                         {arregloTareas.map((tarea, indice) => (
                             <Link to={"/dashboard/detailtask/" + tarea._id}>
-                                <div key={indice} className="task" style={{ color: tarea.color }}>
+                                <div key={indice} className="task">
                                     <div className="task__title">
-                                        <h5>{tarea.titulo}</h5>
+                                        <h5 style={{fontWeight: 'bold'}}>{tarea.titulo}</h5>
                                     </div>
                                     <div className="task__body">
-                                        <p>
-                                            Estado: {tarea.estado === 1 ? 'Pendiente' : ''}
+                                        <p style={{fontWeight: 'bold'}}>Estado: <span style={{ color: estados[tarea.estado].color }}>{estados[tarea.estado].texto}</span></p>
+                                        <p style={{fontWeight: 'bold'}}>
+                                            Prioridad: <span style={{ color: prioridades[tarea.prioridad].color }}>{prioridades[tarea.prioridad].texto}</span>
                                         </p>
-                                        <p>
-                                            Prioridad: {tarea.prioridad === 1 ? 'Baja' : 'Media'}
-                                        </p>
-                                        <p>Finaliza: {obtenerFechaLocal(tarea.fechaVencimiento)}{"-"}{obtenerHora(tarea.fechaVencimiento)}</p>
+                                        <p style={{fontWeight: 'bold'}}>Finaliza: <span style={{color:'gray'}}>{obtenerFechaLocal(tarea.fechaVencimiento)}{"-"}{obtenerHora(tarea.fechaVencimiento)}</span></p>
                                     </div>
                                 </div>
-                                </Link>
+                            </Link>
                         ))}
                         <div className="task__create">
                             <span><Link to="/dashboard/addtask"><i className="fa-solid fa-square-plus"></i></Link></span>

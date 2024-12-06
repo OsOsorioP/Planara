@@ -8,7 +8,6 @@ class Tarea {
     public fechaVencimiento: Date;
     public estado: number;
     public prioridad: number;
-    public color: string;
     public codUsuario: Usuario;
 
     constructor(
@@ -19,7 +18,6 @@ class Tarea {
         fechaVencimiento: Date,
         estado: number,
         prioridad: number,
-        color:string,
         codUsuario:Usuario
       ) {
         this._id = id
@@ -29,7 +27,6 @@ class Tarea {
         this.fechaVencimiento = fechaVencimiento;
         this.estado = estado;
         this.prioridad = prioridad;
-        this.color = color;
         this.codUsuario = codUsuario;
       }
 }

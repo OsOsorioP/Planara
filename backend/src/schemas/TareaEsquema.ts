@@ -14,8 +14,6 @@ const TareaEsquema = new Schema<TareaEntidad>(
       enum: [1, 2, 3],
       default: 1,
     },
-    color: {type: String, required:true}
-    ,
     codUsuario: { type: Types.ObjectId, ref: "Usuario", required: true },
   },
   { versionKey: false }
