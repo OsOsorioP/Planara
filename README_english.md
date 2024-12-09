@@ -26,10 +26,10 @@
 
 1. Sign up or log in.
 2. Create a new task list.
-3. Use the admin profile to monitor and manage users and tasks.
+3. Use the admin profile to monitor and manage users.
 
 ## Contributions
 
-Contributions are welcome! Please open an issue or submit a pull request to collaborate.
+Contributions are welcome! Please contact me through my email oscar.osorio1884@gmail.com.
 
 Developed with ❤️ by Oscar Osorio.
