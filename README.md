@@ -1,3 +1,7 @@
+<p align="center">
+  | <a href="https://github.com/OsOsorioP/OsOsorioP/blob/main/README_english.md" target="_blank">English</a> |
+</p>
+
 # Planara
 
 **Planara** es una aplicación web diseñada para gestionar listas de tareas de manera eficiente. Ofrece funcionalidades tanto para usuarios estándar como para administradores, permitiendo personalizar y supervisar las tareas con facilidad.
