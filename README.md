@@ -27,11 +27,13 @@
 
 1. Regístrate o inicia sesión.  
 2. Crea una nueva lista de tareas.  
-3. Usa el perfil de administrador para supervisar y gestionar usuarios.  
+3. Usa el perfil de administrador para supervisar y gestionar usuarios.
 
 ## Contribuciones  
 
 ¡Las contribuciones son bienvenidas! Por favor, contactame por medio de mi correo oscar.osorio1884@gmail.com.  
+
+## Imagenes
 
 Desarrollado con ❤️ por Oscar Osorio.  
 
