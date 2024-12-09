@@ -22,3 +22,16 @@
   - [Express.js](https://expressjs.com/)
   - Base de datos: [MongoDB](https://www.mongodb.com/)
 - **Lenguaje:** [TypeScript](https://www.typescriptlang.org/)
+
+## Uso
+
+1. Regístrate o inicia sesión.  
+2. Crea una nueva lista de tareas.  
+3. Usa el perfil de administrador para supervisar y gestionar usuarios y tareas.  
+
+## Contribuciones  
+
+¡Las contribuciones son bienvenidas! Por favor, abre un issue o envía un pull request para colaborar.  
+
+Desarrollado con ❤️ por Oscar Osorio.  
+
