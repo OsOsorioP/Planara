@@ -56,7 +56,5 @@
 
 ¡Las contribuciones son bienvenidas! Por favor, contactame por medio de mi correo oscar.osorio1884@gmail.com.  
 
-## Imagenes
-
 Desarrollado con ❤️ por Oscar Osorio.  
 
